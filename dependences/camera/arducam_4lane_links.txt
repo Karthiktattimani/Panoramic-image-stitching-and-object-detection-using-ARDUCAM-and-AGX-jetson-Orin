@@ -1,0 +1,17 @@
+declare -A orin_nx_download_links 
+declare -A orin_nx_names
+
+orin_nx_names["5.15.148-tegra-36.4.0-20240912212859"]="arducam-nvidia-l4t-kernel-t234-nx-5.15.148-tegra-36.4.0-20241115091402_arm64_arducam_4lane.deb"
+orin_nx_download_links["5.15.148-tegra-36.4.0-20240912212859"]="https://github.com/ArduCAM/MIPI_Camera/releases/download/v0.0.1-orin-nx/arducam-nvidia-l4t-kernel-t234-nx-5.15.148-tegra-36.4.0-20241115091402_arm64_arducam_4lane.deb"
+
+orin_nx_names["5.15.148-tegra-36.4.3-20250107174145"]="arducam-nvidia-l4t-kernel-t234-nx-5.15.148-tegra-36.4.3-20250205154721_arm64_arducam_4lane.deb"
+orin_nx_download_links["5.15.148-tegra-36.4.3-20250107174145"]="https://github.com/ArduCAM/MIPI_Camera/releases/download/v0.0.1-orin-nx/arducam-nvidia-l4t-kernel-t234-nx-5.15.148-tegra-36.4.3-20250205154721_arm64_arducam_4lane.deb"
+
+declare -A orin_nano_download_links 
+declare -A orin_nano_names
+
+orin_nano_names["5.15.148-tegra-36.4.0-20240912212859"]="arducam-nvidia-l4t-kernel-t234-nx-5.15.148-tegra-36.4.0-20241115091402_arm64_arducam_4lane.deb"
+orin_nano_download_links["5.15.148-tegra-36.4.0-20240912212859"]="https://github.com/ArduCAM/MIPI_Camera/releases/download/v0.0.1-orin-nx/arducam-nvidia-l4t-kernel-t234-nx-5.15.148-tegra-36.4.0-20241115091402_arm64_arducam_4lane.deb"
+
+orin_nano_names["5.15.148-tegra-36.4.3-20250107174145"]="arducam-nvidia-l4t-kernel-t234-nx-5.15.148-tegra-36.4.3-20250205154721_arm64_arducam_4lane.deb"
+orin_nano_download_links["5.15.148-tegra-36.4.3-20250107174145"]="https://github.com/ArduCAM/MIPI_Camera/releases/download/v0.0.1-orin-nx/arducam-nvidia-l4t-kernel-t234-nx-5.15.148-tegra-36.4.3-20250205154721_arm64_arducam_4lane.deb"

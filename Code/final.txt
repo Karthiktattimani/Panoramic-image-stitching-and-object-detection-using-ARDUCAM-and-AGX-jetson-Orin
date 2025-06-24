@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Set the directory where images will be saved
+capture_dir="/home/nvidia/team16/captured_images"
+stitched_dir="/home/nvidia/team16/stitched_images"
+final_dir="/home/nvidia/team16/final_images"
+iteration=$(date +%Y%m%d%H%M%S)
+
+echo "📸 Capturing image from Camera 0..."
+
+# Capture image from Camera 0 and save it to the specified path
+gst-launch-1.0 nvarguscamerasrc sensor-id=0 num-buffers=1 ! \
+'video/x-raw(memory:NVMM),width=4032,height=3040,framerate=21/1' ! \
+nvvideoconvert ! \
+'video/x-raw, format=BGRx' ! \
+videoconvert ! \
+'video/x-raw, format=RGB' ! \
+jpegenc ! \
+filesink location="$capture_dir/capture_0_$iteration.jpg" && \
+echo "Captured image from Camera 0 saved as $capture_dir/capture_0_$iteration.jpg" &
+
+echo "📸 Capturing image from Camera 1..."
+
+# Capture image from Camera 1 and save it to the specified path
+gst-launch-1.0 nvarguscamerasrc sensor-id=1 num-buffers=1 ! \
+'video/x-raw(memory:NVMM),width=4032,height=3040,framerate=21/1' ! \
+nvvideoconvert ! \
+'video/x-raw, format=BGRx' ! \
+videoconvert ! \
+'video/x-raw, format=RGB' ! \
+jpegenc ! \
+filesink location="$capture_dir/capture_1_$iteration.jpg" && \
+echo "Captured image from Camera 1 saved as $capture_dir/capture_1_$iteration.jpg" &
+
+# Wait for both background processes to finish
+wait
+
+# Add a sleep time to ensure the image files are fully captured
+sleep 2
+
+echo "🧵 Stitching images together for iteration $iteration..."
+
+# Run Python script to stitch images
+python3 /home/nvidia/team16/stitch_images.py --iteration $iteration
+
+echo "✅ Done!"
+
+# After stitching is done, perform object detection
+echo "🔍 Performing object detection on the stitched image..."
+
+# Run Python script for object detection on the stitched image
+python3 /home/nvidia/team16/object_detection.py --iteration $iteration
+
+echo "✅ Object detection complete and final image saved!"
+
